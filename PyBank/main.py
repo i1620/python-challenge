@@ -3,6 +3,7 @@ import os
 
 budgetFilePath = os.path.join("Resources/" + "budget_data.csv")
 
+#variables & lists
 total = 0
 profit = 0
 loss = 0
@@ -24,9 +25,9 @@ with open(budgetFilePath ) as csvFile:
 		revenue.append(row[1])
 		total = int(row[1])
 		if total > 0:
-			profit = total + profit
+			profit += total
 		elif total < 0:
-			loss = total + loss
+			loss += total
 	total_amount = profit + loss
 	month_total = len(month)
 
@@ -43,7 +44,7 @@ with open(budgetFilePath ) as csvFile:
 		revenue_change.append(revenue_loss)
 	Total = sum(revenue_change)
 	avg_change = Total / len(revenue_change)
-	avg = str(round(avg_change,2))
+	avg = round(avg_change,2)
 
 	print(f"Average Change : ${avg}")
 
@@ -62,7 +63,7 @@ with open(budgetFilePath ) as csvFile:
 	print(f"Greatest Decrease in Profits : {month_dec} (${dec_change})")
 
 outputPath = os.path.join("analysis/" + "PyBank.py")
-with open(outputPath, 'w', newline='') as text_file:
+with open(outputPath, 'w+', newline='') as text_file:
 
 	print("Financial Analysis", file=text_file)
 	print("-----------------------------", file=text_file)

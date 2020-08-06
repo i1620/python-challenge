@@ -1,7 +1,7 @@
 import csv
 import os
 
-#possible variables
+#empty lists
 total_votes = []
 candidates = []
 candidate_1 = []
@@ -45,27 +45,26 @@ with open(electionFilePath ) as csvFile:
             c4_votes = len(candidate_4)
     
 #find percentage of votes for each candidate
-    c1_percent = round(((c1_votes/t_votes)*100), 2)
-    c1_per = format(c1_percent, '.3f')
-    c2_percent = round(((c2_votes/t_votes)*100), 2)
-    c2_per = format(c2_percent, '.3f')
-    c3_percent = round(((c3_votes/t_votes)*100), 2)
-    c3_per = format(c3_percent, '.3f')
-    c4_percent = round(((c4_votes/t_votes)*100), 2)
-    c4_per = format(c4_percent, '.3f')
+    c1_percent = format(round(((c1_votes/t_votes)*100), 2),'.3f')
+    c2_percent = format(round(((c2_votes/t_votes)*100), 2),'.3f')
+    #c2_per = format(c2_percent, '.3f')
+    c3_percent = format(round(((c3_votes/t_votes)*100), 2), '.3f')
+    #c3_per = format(c3_percent, '.3f')
+    c4_percent = format(round(((c4_votes/t_votes)*100), 2), '.3f')
+    #c4_per = format(c4_percent, '.3f')
 
-    print(f"Khan: {c1_per}% ({c1_votes})")
-    print(f"Correy: {c2_per}% ({c2_votes})")
-    print(f"Li: {c3_per}% ({c3_votes})")
-    print(f"O'Toole: {c4_per}% ({c4_votes})")
+    print(f"Khan: {c1_percent}% ({c1_votes})")
+    print(f"Correy: {c2_percent}% ({c2_votes})")
+    print(f"Li: {c3_percent}% ({c3_votes})")
+    print(f"O'Toole: {c4_percent}% ({c4_votes})")
     print("-----------------------------")
 
 #find winner
-    if c1_per > max(c2_per, c3_per, c4_per):
+    if c1_percent > max(c2_percent, c3_percent, c4_percent):
         winner = "Khan"
-    elif c2_per > max(c1_per, c3_per, c4_per):
+    elif c2_percent > max(c1_percent, c3_percent, c4_percent):
         winner = "Correy"
-    elif c3_per > max(c1_per, c2_per, c4_per):
+    elif c3_percent > max(c1_percent, c2_percent, c4_percent):
         winner = "Li"
     else:
         winner = "O'Toole"
@@ -74,16 +73,16 @@ with open(electionFilePath ) as csvFile:
     print("-----------------------------")
 
 outputPath = os.path.join("analysis/" + "PyPoll.py")
-with open(outputPath, 'w', newline='') as text_file:
+with open(outputPath, 'w+', newline='') as text_file:
 
     print("Election Results", file=text_file)
     print("-----------------------------", file=text_file)
     print(f"Total Votes: {t_votes}", file=text_file)
     print("-----------------------------", file=text_file)
-    print(f"Khan: {c1_per}% ({c1_votes})", file=text_file)
-    print(f"Correy: {c2_per}% ({c2_votes})", file=text_file)
-    print(f"Li: {c3_per}% ({c3_votes})", file=text_file)
-    print(f"O'Toole: {c4_per}% ({c4_votes})", file=text_file)
+    print(f"Khan: {c1_percent}% ({c1_votes})", file=text_file)
+    print(f"Correy: {c2_percent}% ({c2_votes})", file=text_file)
+    print(f"Li: {c3_percent}% ({c3_votes})", file=text_file)
+    print(f"O'Toole: {c4_percent}% ({c4_votes})", file=text_file)
     print("-----------------------------", file=text_file)
     print(f"Winner: {winner}", file=text_file)
     print("-----------------------------", file=text_file)
