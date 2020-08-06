@@ -18,17 +18,7 @@ with open(budgetFilePath ) as csvFile:
 
 	csvRow = next(csvReader)
 
-#find number of months
-	month_total = sum(1 for row in csvReader)
-
-	print("Financial Analysis")
-	print("-----------------------------")
-	print(f"Total Months: {month_total}")
-
-	csvFile.seek(0)
-	next(csvReader)
-
-#find the total amount
+#find the total number of months and total amount
 	for row in csvReader:
 		month.append(row[0])
 		revenue.append(row[1])
@@ -38,7 +28,11 @@ with open(budgetFilePath ) as csvFile:
 		elif total < 0:
 			loss = total + loss
 	total_amount = profit + loss
+	month_total = len(month)
 
+	print("Financial Analysis")
+	print("-----------------------------")
+	print(f"Total Months: {month_total}")
 	print(f"Total: ${total_amount}")
 
 
