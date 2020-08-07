@@ -47,11 +47,8 @@ with open(electionFilePath ) as csvFile:
 #find percentage of votes for each candidate
     c1_percent = format(round(((c1_votes/t_votes)*100), 2),'.3f')
     c2_percent = format(round(((c2_votes/t_votes)*100), 2),'.3f')
-    #c2_per = format(c2_percent, '.3f')
     c3_percent = format(round(((c3_votes/t_votes)*100), 2), '.3f')
-    #c3_per = format(c3_percent, '.3f')
     c4_percent = format(round(((c4_votes/t_votes)*100), 2), '.3f')
-    #c4_per = format(c4_percent, '.3f')
 
     print(f"Khan: {c1_percent}% ({c1_votes})")
     print(f"Correy: {c2_percent}% ({c2_votes})")
